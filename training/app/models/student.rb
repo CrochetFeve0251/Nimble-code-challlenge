@@ -1,6 +1,6 @@
 class Student < Person
     # Attributes: name, lastname, citizen_id, login, password, student_id
-    has_one :companion, class_name: "StudentCompagnon", inverse_of: :student, dependent: :destroy, autosave: true
+    has_one :companion, class_name: "StudentCompagnion", inverse_of: :student, dependent: :destroy, autosave: true
     
     delegate :student_id, :student_id=, to: :lazily_built_companion
 

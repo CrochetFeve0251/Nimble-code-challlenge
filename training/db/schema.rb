@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20190201205527) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "student_compagnons", force: :cascade do |t|
+  create_table "student_compagnions", force: :cascade do |t|
     t.integer "student_id"
     t.integer "students_id"
   end

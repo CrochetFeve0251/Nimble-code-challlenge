@@ -1,4 +1,4 @@
-class StudentCompagnon < ActiveRecord::Base
+class StudentCompagnion < ActiveRecord::Base
     # Attributes: student_id
      belongs_to :student, inverse_of: :companion
      
