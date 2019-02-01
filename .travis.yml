@@ -3,4 +3,4 @@ ruby:
     - 2.3.4
 
 script:
-     - rake test:all
+     - cd training;rake test:all
