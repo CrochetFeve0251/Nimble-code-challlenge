@@ -1,15 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  firstname: MyString
-  lastname: MyString
-  login: MyString
-  password: MyString
+  firstname: "John"
+  lastname: "McCain"
+  login: "john.mccain"
+  password: "john.mccain1"
   citizen_id: 1
 
 two:
-  firstname: MyString
-  lastname: MyString
-  login: MyString
-  password: MyString
-  citizen_id: 1
+  firstname: "Bob"
+  lastname: "Lenon"
+  login: "bob.lenon"
+  password: "bob.lenon2"
+  citizen_id: 2
+
+third:
+  firstname: "chayaporn"
+  lastname: "tanmak"
+  login: "chayaporn.tanma3k"
+  password: "chayaporn.tanmak"
+  citizen_id: 3
+  
