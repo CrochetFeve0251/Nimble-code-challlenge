@@ -21,22 +21,22 @@ class StudentTest < ActiveSupport::TestCase
     student.citizen_id = @people.citizen_id
     student.login = @people.login
     student.password = @people.password
-    student.student_id = @student_compagnion.student_id
+    student.student_number = @student_compagnion.student_number
     assert student.save
   end
   
-  test "shouldn't save student with student_id" do
+  test "shouldn't save student without student_number" do
     student = Student.new
     student.firstname = @people.firstname
     student.lastname = @people.lastname
     student.citizen_id = @people.citizen_id
     student.login = @people.login
     student.password = @people.password
-    student.student_id = nil
+    student.student_number = nil
     assert_not student.save
   end
   
-  test "shouldn't save student with a student_id already defined" do
+  test "shouldn't save student with a student_number already defined" do
     second_student_values = people(:one)
     student = Student.new
     second_student = Student.new
@@ -45,36 +45,34 @@ class StudentTest < ActiveSupport::TestCase
     student.citizen_id = @people.citizen_id
     student.login = @people.login
     student.password = @people.password
-    student.student_id = @student_compagnion.student_id
+    student.student_number = @student_compagnion.student_number
     second_student.firstname = @people.firstname
     second_student.lastname = @people.lastname
     second_student.citizen_id = @people.citizen_id
     second_student.login = @people.login
     second_student.password = @people.password
-    second_student.student_id = @student_compagnion.student_id
+    second_student.student_number = @student_compagnion.student_number
     assert student.save
     assert_not second_student.save
   end
   
   test "should be able to recreate the same after deleting" do
     student = Student.new
-    second_student = Student.new
     student.firstname = @people.firstname
     student.lastname = @people.lastname
     student.citizen_id = @people.citizen_id
     student.login = @people.login
     student.password = @people.password
-    student.student_id = @student_compagnion.student_id
+    student.student_number = @student_compagnion.student_number
     assert student.save
-    assert student.delete
+    assert student.destroy
     student = Student.new
-    second_student = Student.new
     student.firstname = @people.firstname
     student.lastname = @people.lastname
     student.citizen_id = @people.citizen_id
     student.login = @people.login
     student.password = @people.password
-    student.student_id = @student_compagnion.student_id
+    student.student_number = @student_compagnion.student_number
     assert student.save
   end
 end

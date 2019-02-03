@@ -5,9 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-    instructor_id: 1
+    instructor_number: 1
     departement_name: "test"
 
 two:
-    instructor_id: 2
+    instructor_number: 2
     departement_name: "test"

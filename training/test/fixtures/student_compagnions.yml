@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-    student_id: 1
+    student_number: 1
 
 two:
-    student_id: 2
+    student_number: 2
