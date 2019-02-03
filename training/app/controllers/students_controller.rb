@@ -10,7 +10,6 @@ class StudentsController < PeopleController
     end    
 
     def set_person_model
-        print "ok"
         @person_model = Student
     end
 end
