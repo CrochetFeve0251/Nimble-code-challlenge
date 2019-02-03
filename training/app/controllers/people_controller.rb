@@ -1,20 +1,22 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_person_model, :set_index_url
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = @person_model.all
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
   end
+  
 
   # GET /people/new
   def new
-    @person = Person.new
+    @person = @person_model.new
   end
 
   # GET /people/1/edit
@@ -24,11 +26,11 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(person_params)
+    @person = @person_model.new(person_params)
 
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        format.html { redirect_to @person, notice: "#{@person_model.to_s} was successfully created." }
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new }
@@ -37,12 +39,14 @@ class PeopleController < ApplicationController
     end
   end
 
+  
+
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
     respond_to do |format|
       if @person.update(person_params)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to @person, notice: "#{@person_model.to_s} was successfully updated." }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :edit }
@@ -56,19 +60,24 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
+      format.html { redirect_to @index_url, notice: "#{@person_model.to_s} was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  private
+    protected
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      @person = Person.find(params[:id])
     end
+
+    def set_person_model
+    end  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:firstname, :lastname, :login, :password, :citizen_id)
+    end
+  
+    def set_index_url
+      @index_url = eval(self.class.to_s.remove(/Controller$/).downcase + "_url")
     end
 end
