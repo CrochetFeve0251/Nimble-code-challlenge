@@ -17,5 +17,9 @@ class Instructor < Person
             raise ActiveRecord::RecordNotFound.new("Couldn't find Instructor with 'id'=#{id}")            
         end
         return instructor
-    end    
+    end
+    
+    def self.all
+        return super.joins(:companion).where.not(instructor_compagnions: {departement_name: nil}).where.not(instructor_compagnions: {instructor_number: nil})
+    end
 end

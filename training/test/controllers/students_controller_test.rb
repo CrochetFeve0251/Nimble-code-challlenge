@@ -4,6 +4,7 @@ class StudentsControllerTest < ActionController::TestCase
     setup do
     @person = people(:one)
     @student_compagnion = student_compagnions(:one)
+    Person.destroy_all
     Student.destroy_all
     StudentCompagnion.destroy_all
     student = Student.new

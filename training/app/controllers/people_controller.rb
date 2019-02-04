@@ -77,6 +77,7 @@ class PeopleController < ApplicationController
     def person_params
     end
   
+    #override it if your controller is not to the form {model_name_plural}Controller
     def set_index_url
       @index_url = eval(self.class.to_s.remove(/Controller$/).downcase + "_url")
     end

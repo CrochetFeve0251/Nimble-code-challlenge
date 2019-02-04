@@ -11,21 +11,21 @@ class CourseTest < ActiveSupport::TestCase
   test "Should add Student" do
     student = Student.new
     assert_nothing_raised ActiveRecord::AssociationTypeMismatch do
-      @course.students<< student
+      @course.persons<< student
     end
   end
   
   test "Should add Instructor" do
     instructor = Instructor.new
-    assert_raise ActiveRecord::AssociationTypeMismatch do
-          @course.students<< instructor
+    assert_nothing_raised ActiveRecord::AssociationTypeMismatch do
+          @course.persons<< instructor
     end
   end
   
   test "Should add Extern" do
     extern = Extern.new
-    assert_raise ActiveRecord::AssociationTypeMismatch do
-          @course.students<< extern
+    assert_nothing_raised ActiveRecord::AssociationTypeMismatch do
+          @course.persons<< extern
     end
   end
 end

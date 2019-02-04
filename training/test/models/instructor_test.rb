@@ -4,6 +4,7 @@ class InstructorTest < ActiveSupport::TestCase
      setup do
     @people = people(:one)
     @instructor_compagnion = instructor_compagnions(:one)
+    Person.destroy_all
     Instructor.destroy_all
     InstructorCompagnion.destroy_all
   end
