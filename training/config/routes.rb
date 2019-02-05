@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :students, skip: [:sessions, :password],:controllers => {:registrations => "students/registrations"}
+  devise_for :instructors, skip: [:sessions, :password],:controllers => {:registrations => "instructors/registrations"}
+  devise_for :externs, skip: [:sessions, :password],:controllers => {:registrations => "externs/registrations"}
+  devise_for :people, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification'}, only: [:sessions, :password]
   resources :instructors
   resources :students
   resources :externs
@@ -7,7 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'courses#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

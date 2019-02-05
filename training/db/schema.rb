@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190203203126) do
+ActiveRecord::Schema.define(version: 20190204134220) do
 
   create_table "courses", force: :cascade do |t|
     t.string  "subject"
@@ -42,9 +42,17 @@ ActiveRecord::Schema.define(version: 20190203203126) do
     t.string   "login"
     t.string   "password"
     t.integer  "citizen_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
   end
+
+  add_index "people", ["email"], name: "index_people_on_email", unique: true
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
 
   create_table "student_compagnions", force: :cascade do |t|
     t.integer "student_number"

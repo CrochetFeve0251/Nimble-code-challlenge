@@ -1,10 +1,12 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_action :set_person_model, :set_index_url
-
+  include Connected
+  
   # GET /people
   # GET /people.json
   def index
+    print session
     @people = @person_model.all
   end
 
@@ -81,4 +83,12 @@ class PeopleController < ApplicationController
     def set_index_url
       @index_url = eval(self.class.to_s.remove(/Controller$/).downcase + "_url")
     end
+  
+  
+  def sign_up_params
+  end
+
+  def account_update_params
+  end
+  
 end
