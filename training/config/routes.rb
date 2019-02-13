@@ -7,14 +7,17 @@ Rails.application.routes.draw do
   resources :students
   resources :externs
   
+  post 'courses/:course_id/groups/:id/submit_work' => 'groups#submit_work'
+  post 'courses/:course_id/groups/:id/submit_mark' => 'groups#submit_mark'
+
   resources :courses do
     get 'register'
     get 'leave'  
-      resources :groups, only: [:show, :create, :new, :index, :destroy] do
-        post 'submit_subject'
-        post 'sumbit_mark'
+      resources :groups, only: [:show, :create, :new, :index, :destroy, :sumbit_mark, :submit_subject] do
+        post 'submit_mark'
     end
   end
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,6 +25,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'courses#index'
+
+  get 'groups' => 'groups#all'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

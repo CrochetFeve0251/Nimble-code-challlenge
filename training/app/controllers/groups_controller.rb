@@ -1,22 +1,33 @@
 class GroupsController < ApplicationController
     before_action :set_group, only: [:show, :edit, :update, :destroy, :submit_work, :submit_mark]
-    before_action :set_group_model, :set_index_url
-    before_action :set_course, :set_student_list, :set_course_model, only: [:index, :edit, :new, :create, :update, :show]
+    before_action :set_index_url, except: [:all]
+    before_action :set_group_model
+    before_action :set_course, :set_student_list, :set_course_model, only: [:index, :edit, :new, :create, :update, :show, :submit_mark, :submit_work]
     before_action :submit_mark_params, only: [:submit_mark]
     before_action :submit_work_params, only: [:submit_work]
   
     def submit_work
         @group.work = params[:work]
-        format.html { redirect_to @group, notice: "Your work was successfully submited." }
-        format.json { render :show, status: :created, location: @group }
+        respond_to do |format|
+          @group.save
+          format.html { redirect_to course_group_path(@course,@group), notice: "Your work was successfully submited." }
+          format.json { render :show, status: :created, location: @group }
+      end
     end
     
     def submit_mark
         @group.mark = params[:mark]
-        format.html { redirect_to @group, notice: "The mark was successfully added." }
-        format.json { render :show, status: :created, location: @group }
+        respond_to do |format|
+          @group.save
+          format.html { redirect_to course_group_path(@course,@group), notice: "The mark was successfully added." }
+          format.json { render :show, status: :created, location: @group }
+      end
     end
     
+  def all
+    @groups =  @group_model.all
+  end
+
 
   def index
     @groups = @course.groups
@@ -80,11 +91,11 @@ protected
     end    
     
     def submit_work_params
-        params.require(:group).permit(:work)
+        params.require(:work)
     end
     
     def submit_mark_params
-        params.require(:group).permet(:mark)
+        params.require(:mark)
     end
     
     def set_group_model

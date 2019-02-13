@@ -9,6 +9,11 @@
   <strong>Mark:</strong>
   <%= @group.mark %>
 </p>
+<p>
+  <strong>Work:</strong>
+  <%= @group.work %>
+</p>
+
 
 <p>
   <strong>Students:</strong>
@@ -16,5 +21,12 @@
   <p><%= @group.firstname %> <%= @group.lastname %></p>
   <% end %> 
 </p>
-
+<%= form_tag(controller: 'groups', action: 'submit_mark', method: "post") do %>
+    <%= number_field_tag(:mark) %>
+    <%= submit_tag("Add mark") %>
+<% end %>
+<%= form_tag(controller: 'groups', action: 'submit_work', method: "post") do %>
+    <%= text_area_tag(:work) %>
+    <%= submit_tag("Add work") %>
+<% end %>
 <%= link_to 'Back', course_groups_path(@course) %>
