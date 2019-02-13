@@ -6,7 +6,6 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    print session
     @people = @person_model.all
   end
 

@@ -10,5 +10,10 @@
   <%= @course.instructor.firstname + " " + @course.instructor.lastname %>
 </p>
 
+<%= link_to 'Join the course', course_register_path(@course) %>
+
+<%= link_to 'Groups', course_groups_path(@course) %>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
+
 <%= link_to 'Back', courses_path %>

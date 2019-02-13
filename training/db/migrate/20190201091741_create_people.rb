@@ -4,7 +4,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :login, unique: true
-      t.string :password
       t.integer :citizen_id, unique: true
 
       t.timestamps null: false

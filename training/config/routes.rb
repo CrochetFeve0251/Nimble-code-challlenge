@@ -6,7 +6,17 @@ Rails.application.routes.draw do
   resources :instructors
   resources :students
   resources :externs
-  resources :courses
+  
+  resources :courses do
+    get 'register'
+    get 'leave'  
+      resources :groups, only: [:show, :create, :new, :index, :destroy] do
+        post 'submit_subject'
+        post 'sumbit_mark'
+    end
+  end
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

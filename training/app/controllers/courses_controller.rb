@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course_apply, only: [:register, :leave]
   before_action :set_course_model, :set_index_url, :set_instructor_model
   before_action :set_instructors_list, only: [:new,:edit, :update, :create]
   before_action :change_params, only: [:create, :update]
@@ -65,10 +66,35 @@ class CoursesController < ApplicationController
     end
   end
 
+  def register
+    if( not @course.students.include?(current_student))
+        @course.students << current_student
+        message = "#{@course_model.to_s} was successfully subcribed."
+    else
+        message = "#{@course_model.to_s} was not subcribed."
+    end
+    respond_to do |format|
+        format.html { redirect_to @index_url, notice: message }
+        format.json { head :no_content }
+      end
+  end
+
+  def leave
+      @course.studentsdelete_if {|s| s.id == current_student.id}
+      respond_to do |format|
+        format.html { redirect_to @index_url, notice: "You successfully leave the course" }
+        format.json { head :no_content }
+      end
+  end
+
     protected
     # Use callbacks to share common setup or constraints between actions.
     def set_course
         @course = Course.find(params[:id])
+    end
+    
+    def set_course_apply
+        @course = Course.find(params[:course_id])
     end
 
     def set_course_model

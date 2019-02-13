@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Firstname:</strong>
-  <%= @person.firstname %>
+  <strong>Subject:</strong>
+  <%= @group.subject %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
-  <%= @person.lastname %>
+  <strong>Work:</strong>
+  <%= @group.work %>
 </p>
 
 <p>
-  <strong>Login:</strong>
-  <%= @person.login %>
+  <strong>Mark:</strong>
+  <%= @group.mark %>
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @person.password %>
+  <strong>Students:</strong>
+  <% group.students.each do |s| %>
+    <p><%= s.firstname %> <%= s.lastname %></p>
+  <% end %>
 </p>
 
-<p>
-  <strong>Citizen:</strong>
-  <%= @person.citizen_id %>
-</p>
-
-<%= link_to 'Edit', edit_extern_path(@person) %> |
-<%= link_to 'Back', externs_path %>
+<%= link_to 'Edit', edit_group_path(@person) %> |
+<%= link_to 'Back', groups_path %>

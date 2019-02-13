@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190204134220) do
+ActiveRecord::Schema.define(version: 20190212083424) do
 
   create_table "courses", force: :cascade do |t|
     t.string  "subject"
@@ -21,12 +21,31 @@ ActiveRecord::Schema.define(version: 20190204134220) do
   add_index "courses", ["instructor_id"], name: "index_courses_on_instructor_id"
 
   create_table "courses_people", id: false, force: :cascade do |t|
-    t.integer "person_id"
+    t.integer "student_id"
     t.integer "course_id"
   end
 
   add_index "courses_people", ["course_id"], name: "index_courses_people_on_course_id"
-  add_index "courses_people", ["person_id"], name: "index_courses_people_on_person_id"
+  add_index "courses_people", ["student_id"], name: "index_courses_people_on_student_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "mark"
+    t.string   "subject"
+    t.text     "work"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "course_id"
+  end
+
+  add_index "groups", ["course_id"], name: "index_groups_on_course_id"
+
+  create_table "groups_people", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "group_id"
+  end
+
+  add_index "groups_people", ["group_id"], name: "index_groups_people_on_group_id"
+  add_index "groups_people", ["student_id"], name: "index_groups_people_on_student_id"
 
   create_table "instructor_compagnions", force: :cascade do |t|
     t.integer "instructor_number"
@@ -40,7 +59,6 @@ ActiveRecord::Schema.define(version: 20190204134220) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "login"
-    t.string   "password"
     t.integer  "citizen_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

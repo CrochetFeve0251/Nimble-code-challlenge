@@ -19,6 +19,7 @@ class InstructorTest < ActiveSupport::TestCase
     instructor.firstname = @people.firstname
     instructor.lastname = @people.lastname
     instructor.citizen_id = @people.citizen_id
+    instructor.email = @people.email
     instructor.login = @people.login
     instructor.password = @people.password
     instructor.departement_name = @instructor_compagnion.departement_name
@@ -32,6 +33,7 @@ class InstructorTest < ActiveSupport::TestCase
     instructor.lastname = @people.lastname
     instructor.citizen_id = @people.citizen_id
     instructor.login = @people.login
+    instructor.email = @people.email
     instructor.password = @people.password
     instructor.departement_name = @instructor_compagnion.departement_name
     instructor.instructor_number = nil
@@ -44,6 +46,7 @@ class InstructorTest < ActiveSupport::TestCase
     instructor.lastname = @people.lastname
     instructor.citizen_id = @people.citizen_id
     instructor.login = @people.login
+    instructor.email = @people.email
     instructor.password = @people.password
     instructor.departement_name = nil
     instructor.instructor_number = @instructor_compagnion.instructor_number
@@ -59,10 +62,12 @@ class InstructorTest < ActiveSupport::TestCase
     instructor.citizen_id = @people.citizen_id
     instructor.login = @people.login
     instructor.password = @people.password
+    instructor.email = @people.email
     instructor.departement_name = @instructor_compagnion.departement_name
     instructor.instructor_number = @instructor_compagnion.instructor_number
     second_instructor.firstname = @people.firstname
     second_instructor.lastname = @people.lastname
+    second_instructor.email = @people.email
     second_instructor.citizen_id = @people.citizen_id
     second_instructor.login = @people.login
     second_instructor.password = @people.password
@@ -79,6 +84,7 @@ class InstructorTest < ActiveSupport::TestCase
     instructor.lastname = @people.lastname
     instructor.citizen_id = @people.citizen_id
     instructor.login = @people.login
+    instructor.email = @people.email
     instructor.password = @people.password
     instructor.departement_name = @instructor_compagnion.departement_name
     instructor.instructor_number = @instructor_compagnion.instructor_number

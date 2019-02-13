@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @group.subject %>
+</p>
+
+<p>
+  <strong>Mark:</strong>
+  <%= @group.mark %>
+</p>
+
+<p>
+  <strong>Students:</strong>
+  <% @group.students.each do |s|  %>
+  <p><%= @group.firstname %> <%= @group.lastname %></p>
+  <% end %> 
+</p>
+
+<%= link_to 'Back', course_groups_path(@course) %>
