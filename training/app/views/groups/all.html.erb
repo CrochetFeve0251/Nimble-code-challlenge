@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Number of students</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.subject %></td>
+        <td><%= group.students.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

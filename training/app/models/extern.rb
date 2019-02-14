@@ -1,0 +1,2 @@
+class Extern < Person
+end

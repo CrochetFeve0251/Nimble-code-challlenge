@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: "John"
+  lastname: "McCain"
+  login: "john.mccain"
+  encrypted_password: "john.mccain1"
+  email: "test@test.test"
+  citizen_id: 1
+
+two:
+  firstname: "Bob"
+  lastname: "Lenon"
+  login: "bob.lenon"
+  encrypted_password: "bob.lenon2"
+  email: "test@2test.test"
+  citizen_id: 2
+
+third:
+  firstname: "chayaporn"
+  lastname: "tanmak"
+  login: "chayaporn.tanma3k"
+  encrypted_password: "chayaporn.tanmak"
+  email: "test4@test.test"
+  citizen_id: 3
+  
